@@ -16,24 +16,20 @@ class TwoFragment : Fragment(R.layout.fragment_two) {
 
     private val args: TwoFragmentArgs by navArgs()
 
-    private var binding: FragmentTwoBinding? = null
-    private val _binding get() = binding!!
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         Log.d("検索した日時", lastSearchDate.toString())
 
-        binding = FragmentTwoBinding.bind(view)
+        val item = args.item
 
-        var item = args.item
-
-        _binding.ownerIconView.load(item.ownerIconUrl)
-        _binding.nameView.text = item.name
-        _binding.languageView.text = String.format(getString(R.string.written_language), item.language)
-        _binding.starsView.text = String.format(getString(R.string.stargazers_count), item.stargazersCount)
-        _binding.watchersView.text = String.format(getString(R.string.watchers_count), item.watchersCount)
-        _binding.forksView.text = String.format(getString(R.string.forks_count), item.forksCount)
-        _binding.openIssuesView.text = String.format(getString(R.string.open_issues_count), item.openIssuesCount)
+        val binding = FragmentTwoBinding.bind(view)
+        binding.ownerIconView.load(item.ownerIconUrl)
+        binding.nameView.text = item.name
+        binding.languageView.text = String.format(getString(R.string.written_language), item.language)
+        binding.starsView.text = String.format(getString(R.string.stargazers_count), item.stargazersCount)
+        binding.watchersView.text = String.format(getString(R.string.watchers_count), item.watchersCount)
+        binding.forksView.text = String.format(getString(R.string.forks_count), item.forksCount)
+        binding.openIssuesView.text = String.format(getString(R.string.open_issues_count), item.openIssuesCount)
     }
 }

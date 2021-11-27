@@ -21,10 +21,10 @@ class OneFragment: Fragment(R.layout.fragment_one) {
 
         val _binding = FragmentOneBinding.bind(view)
 
-        val _viewModel = OneViewModel(context!!)
+        val _viewModel = OneViewModel()
 
-        val _layoutManager = LinearLayoutManager(context!!)
-        val _dividerItemDecoration = DividerItemDecoration(context!!, _layoutManager.orientation)
+        val _layoutManager = LinearLayoutManager(this.context)
+        val _dividerItemDecoration = DividerItemDecoration(this.context, _layoutManager.orientation)
         val _adapter = CustomAdapter(object : CustomAdapter.OnItemClickListener {
             override fun itemClick(item: Item) {
                 gotoRepositoryFragment(item)
