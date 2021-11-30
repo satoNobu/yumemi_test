@@ -6,7 +6,7 @@ import jp.co.yumemi.android.code_check.model.entity.Item
 import jp.co.yumemi.android.code_check.model.repository.db.OneViewModel
 import jp.co.yumemi.android.code_check.one_screen.recycler_view.CustomAdapter
 
-class OnePresenter(private val view: OneContract.View): OneContract.Presenter {
+class OnePresenter(private val view: OneContract.View, private val model: OneViewModel): OneContract.Presenter {
     override fun serAdapter(): CustomAdapter{
         return CustomAdapter(object : CustomAdapter.OnItemClickListener {
             override fun itemClick(item: Item) {
@@ -16,10 +16,9 @@ class OnePresenter(private val view: OneContract.View): OneContract.Presenter {
     }
 
     override fun getEditorActionResult(editText: TextView, action: Int): Boolean {
-        val _viewModel = OneViewModel()
         if (action == EditorInfo.IME_ACTION_SEARCH) {
             editText.text.toString().let {
-                _viewModel.searchResults(it).apply {
+                model.searchResults(it).apply {
                     view.submitList(this)
                 }
             }

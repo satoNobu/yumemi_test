@@ -11,12 +11,13 @@ import androidx.recyclerview.widget.*
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.databinding.FragmentOneBinding
 import jp.co.yumemi.android.code_check.model.entity.Item
+import jp.co.yumemi.android.code_check.model.repository.db.OneViewModel
 import jp.co.yumemi.android.code_check.one_screen.recycler_view.CustomAdapter
 
 class OneFragment: Fragment(R.layout.fragment_one), OneContract.View {
 
-    val presenter by lazy {
-        OnePresenter(this)
+    private val presenter by lazy {
+        OnePresenter(this, OneViewModel())
     }
 
     lateinit var _adapter: CustomAdapter

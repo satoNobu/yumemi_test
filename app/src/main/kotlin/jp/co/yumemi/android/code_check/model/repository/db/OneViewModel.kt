@@ -59,7 +59,7 @@ class OneViewModel : ViewModel() {
                 lastSearchDate = Date()
                 return@async items.toList()
             } catch (e: Exception) {
-                Log.i("ERROR: ", e.toString())
+                Log.d("ERROR: ", e.toString())
                 return@async items.toList()
             }
         }.await()

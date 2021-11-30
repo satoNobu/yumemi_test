@@ -19,7 +19,7 @@ class TwoFragment : Fragment(R.layout.fragment_two), TwoContract.View {
     private var binding: FragmentTwoBinding? = null
     private val _binding get() = binding!!
 
-    val presenter by lazy {
+    private val presenter by lazy {
         TwoPresenter(this)
     }
 
